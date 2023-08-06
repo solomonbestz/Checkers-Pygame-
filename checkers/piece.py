@@ -7,7 +7,7 @@ class Piece:
         self.row = row
         self.col = col
         self.color = color
-        self.king = True
+        self.king = False
 
         if self.color == BLACK:
             self.direction = -1
@@ -31,6 +31,11 @@ class Piece:
         pg.draw.circle(window, self.color, (self.x, self.y), radius + self.BORDER)
         if self.king:
             window.blit(CROWN, (self.x - CROWN.get_width()//2, self.y - CROWN.get_width()//2))
+
+    def move(self, row, col):
+        self.row = row
+        self.col = col
+        self.calc_postion()
 
     def __repr__(self) -> str: 
         return str(self.color)
